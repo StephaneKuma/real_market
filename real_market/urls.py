@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path, include
 from rest_framework import routers
 
+from alert.api.views import AlertViewSet
 from contact_us.api.views import ContactViewSet
 from property.api.views import *
 
@@ -31,6 +32,7 @@ router.register(r'sale_status', SaleStatusViewSet)
 router.register(r'schedules', ScheduleViewSet)
 router.register(r'gallery', GalleryViewSet)
 router.register(r'contact', ContactViewSet)
+router.register(r'alert', AlertViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),

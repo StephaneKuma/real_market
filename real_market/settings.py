@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'ckeditor',
     'corsheaders',
 
+    'alert',
     'property',
     'contact_us',
 ]
