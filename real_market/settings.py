@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'ckeditor',
     'corsheaders',
 
-    'property'
+    'property',
+    'contact_us',
 ]
 
 MIDDLEWARE = [
