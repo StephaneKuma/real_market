@@ -108,7 +108,7 @@ class Property(models.Model):
 
 class Gallery(models.Model):
     picture = models.ImageField()
-    property = models.ForeignKey(Property, on_delete=models.CASCADE)
+    property = models.ForeignKey(Property, related_name='images', on_delete=models.CASCADE)
 
     def __str__(self):
         return '%s ' % self.picture

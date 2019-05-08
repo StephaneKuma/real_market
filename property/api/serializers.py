@@ -56,9 +56,17 @@ class ScheduleSerializer(serializers.HyperlinkedModelSerializer):
 
 
 class PropertySerializer(serializers.HyperlinkedModelSerializer):
+    images = serializers.HyperlinkedRelatedField(
+        many=True,
+        read_only=True,
+        view_name='gallery-detail'
+    )
+
     class Meta:
         model = Property
-        fields = '__all__'
+        fields = ('url', 'id', 'name', 'street', 'postcode', 'property_type',
+                  'sale_status', 'furnished', 'price', 'rooms', 'bathrooms', 'parking',
+                  'property_desc', 'location', 'schedule', 'floor', 'featured', 'images')
 
 
 class GallerySerializer(serializers.HyperlinkedModelSerializer):

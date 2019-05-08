@@ -1,15 +1,18 @@
 import React from 'react';
 import 'antd/dist/antd.css';
+import { BrowserRouter as Router } from 'react-router-dom';
 
+import BaseRouter from './routes'
 import CustomLayout from './containers/Layout';
-import PropertyListView from './containers/PropertyListView';
 
 function App() {
     return (
         <div className="App">
-            <CustomLayout>
-                <PropertyListView />
-            </CustomLayout>
+            <Router>
+                <CustomLayout>
+                    <BaseRouter />
+                </CustomLayout>
+            </Router>
         </div>
     );
 }

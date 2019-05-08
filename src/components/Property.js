@@ -10,6 +10,10 @@ const IconText = ({ type, text }) => (
   </span>
 );
 
+const image = (item) => {
+    return item.picture
+};
+
 const Properties = (props) => {
     return (
         <List
@@ -27,11 +31,11 @@ const Properties = (props) => {
                 <List.Item
                 key={item.title}
                 actions={[<IconText type="star-o" text="156" />, <IconText type="like-o" text="156" />, <IconText type="message" text="2" />]}
-                extra={<img width={272} alt="logo" src="https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png" />}
+                extra={<img width={272} alt="logo" src={`${image(item.images)}`} />}
                 >
                     <List.Item.Meta
                         avatar={<Avatar src={item.avatar} />}
-                        title={<a href={item.href}>{item.title}</a>}
+                        title={<a href={`/${item.id}`}>{item.title}</a>}
                         description={item.description}
                     />
                     {item.content}

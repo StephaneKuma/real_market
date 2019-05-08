@@ -31,7 +31,7 @@ class PropertyListView extends React.Component {
 
     render() {
         return (
-            <Properties data={listData} />
+            <Properties data={this.state.properties} />
         )
     }
 }
