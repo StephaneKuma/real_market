@@ -1,47 +1,39 @@
 import React from 'react';
 
-import { List, Avatar, Icon } from 'antd';
+import { List, Card, Button, Icon } from 'antd';
 
+import styles from '../CardList.less';
 
-const IconText = ({ type, text }) => (
-  <span>
-    <Icon type={type} style={{ marginRight: 8 }} />
-    {text}
-  </span>
-);
-
-const image = (item) => {
-    return item.picture
+const gridStyle = {
+    width: '25%',
+    textAlign: 'center'
 };
 
 const Properties = (props) => {
     return (
         <List
-            itemLayout="vertical"
-            size="large"
-            pagination={{
-                onChange: (page) => {
-                    console.log(page);
-                  },
-                pageSize: 3,
-            }}
+            rowKey="id"
+            grid={{ gutter: 24, lg: 3, md: 2, sm: 1, xs: 1 }}
             dataSource={props.data}
-            footer={<div><b>ant design</b> footer part</div>}
-            renderItem={item => (
-                <List.Item
-                key={item.title}
-                actions={[<IconText type="star-o" text="156" />, <IconText type="like-o" text="156" />, <IconText type="message" text="2" />]}
-                extra={<img width={272} alt="logo" src={`${image(item.images)}`} />}
-                >
-                    <List.Item.Meta
-                        avatar={<Avatar src={item.avatar} />}
-                        title={<a href={`/${item.id}`}>{item.title}</a>}
-                        description={item.description}
+            renderItem={item =>
+              item ? (
+                <List.Item key={item.id}>
+                  <Card hoverable className={styles.card} actions={[<a>操作一</a>, <a>操作二</a>]}>
+                    <Card.Meta
+                      avatar={<img alt="" className={styles.cardAvatar} src={item.avatar} />}
+                      title={<a>{item.title}</a>}
                     />
-                    {item.content}
-                 </List.Item>
-            )}
-        />
+                  </Card>
+                </List.Item>
+              ) : (
+                <List.Item>
+                  <Button type="dashed" className={styles.newButton}>
+                    <Icon type="plus" /> 新建产品
+                  </Button>
+                </List.Item>
+              )
+            }
+          />
     )
 };
 

@@ -16,22 +16,31 @@ for (let i = 0; i < 23; i++) {
 
 class PropertyListView extends React.Component {
     state = {
-        properties: []
+        properties: [],
+        gallery: []
     };
 
     componentDidMount() {
         axios.get('http://127.0.0.1:8000/properties/')
             .then(res => {
                 this.setState({
-                    properties: res.data
+                    properties: res.data.results,
                 });
-                console.log(res.data)
+                console.log(res.data.results)
+            });
+        axios.get('http://127.0.0.1:8000/gallery/')
+            .then(res => {
+                this.setState({
+                    gallery: res.data.results
+                });
+                console.log(res.data.results)
             })
     }
 
     render() {
         return (
-            <Properties data={this.state.properties} />
+            /*<Properties data={listData} />*/
+            <Properties data={this.state.properties} pictures={this.state.gallery}/>
         )
     }
 }

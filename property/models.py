@@ -85,6 +85,7 @@ class Property(models.Model):
     name = models.CharField(max_length=150)
     street = models.ForeignKey(Street, on_delete=models.CASCADE)
     postcode = models.CharField(max_length=150, blank=True)
+    image = models.ImageField(default=None, blank=True, null=True)
     property_type = models.ForeignKey(PropertyType, on_delete=models.CASCADE)
     sale_status = models.ForeignKey(SaleStatus, on_delete=models.CASCADE)
     furnished = models.NullBooleanField()
@@ -107,7 +108,7 @@ class Property(models.Model):
 
 
 class Gallery(models.Model):
-    picture = models.ImageField()
+    picture = models.ImageField(default=None, blank=True, null=True, upload_to='property/uploads/gallery')
     property = models.ForeignKey(Property, related_name='images', on_delete=models.CASCADE)
 
     def __str__(self):
